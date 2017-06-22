@@ -1,5 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+const FilteredFruitList = ({fruit, filter}) => {
+  const list = !filter ? fruit : fruit.filter(i => i.fruit_type === filter);
+  return (
+    <ul className="fruit-list">
+      {list.map((item, index) => <li key={index}>{item.char}</li>)}
+    </ul>
+  );
+};
+
+FilteredFruitList.defaultProps = {
+  fruit: [],
+  filter: null
+};
+
+export default FilteredFruitList;
+
+/*
 class FilteredFruitList extends Component {
   constructor(props) {
     super(props);
@@ -25,5 +42,4 @@ class FilteredFruitList extends Component {
     );
   }
 }
-
-export default FilteredFruitList;
+*/
